@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Portfólio - Letícia Moura</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio pessoal desenvolvido para o projeto final de HTML5">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --roxo-principal: #8B5CF6;
+            --roxo-escuro: #6D28D9;
+            --roxo-claro: #C4B5FD;
+            --rosa-destaque: #EC4899;
+            --laranja-gradient: #F59E0B;
+            --verde-sucesso: #10B981;
+            --azul-info: #3B82F6;
+            --cinza-fundo: #F3F4F6;
+            --cinza-texto: #1F2937;
+            --branco-puro: #FFFFFF;
+            --sombra-suave: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--cinza-texto);
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+
+        header, nav, main, aside, footer {
+            max-width: 1200px;
+            margin: 0 auto 25px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        header:hover, nav:hover, main:hover, aside:hover, footer:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(139, 92, 246, 0.3);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--roxo-principal), var(--roxo-escuro));
+            color: var(--branco-puro);
+            text-align: center;
+            border-bottom: 6px solid var(--rosa-destaque);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: brilho 3s infinite;
+        }
+
+        @keyframes brilho {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        header h1 {
+            font-size: 3em;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+            position: relative;
+        }
+
+        nav {
+            background: var(--branco-puro);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--cinza-texto);
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--roxo-principal), var(--rosa-destaque));
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--roxo-principal);
+        }
+
+        nav ul li a:hover::after {
+            width: 70%;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--roxo-escuro);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--roxo-principal), var(--rosa-destaque));
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--cinza-texto);
+            margin: 20px 0 15px;
+            font-weight: 600;
+        }
+
+        #sobre article {
+            background: linear-gradient(135deg, var(--cinza-fundo) 0%, var(--branco-puro) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 6px solid var(--roxo-principal);
+        }
+
+        .sobre-container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .foto-perfil {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+
+        .foto-perfil img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--roxo-principal);
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+        }
+
+        .foto-perfil img:hover {
+            transform: scale(1.05);
+            border-color: var(--rosa-destaque);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+        }
+
+        .foto-perfil figcaption {
+            margin-top: 10px;
+            font-weight: 600;
+            color: var(--roxo-escuro);
+            background: var(--roxo-claro);
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .sobre-conteudo {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        blockquote {
+            font-style: italic;
+            padding: 20px 30px;
+            margin: 20px 0;
+            background: linear-gradient(135deg, var(--roxo-claro) 0%, var(--branco-puro) 100%);
+            border-radius: 15px;
+            border-left: 6px solid var(--rosa-destaque);
+            font-size: 1.2em;
+            color: var(--roxo-escuro);
+            box-shadow: var(--sombra-suave);
+        }
+
+        blockquote cite {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: var(--azul-info);
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--roxo-principal), var(--roxo-escuro));
+            color: var(--branco-puro);
+        }
+
+        th {
+            padding: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+        }
+
+        td {
+            padding: 15px;
+            background-color: var(--branco-puro);
+            border-bottom: 1px solid var(--cinza-fundo);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover td {
+            background: linear-gradient(135deg, var(--roxo-claro) 0%, var(--branco-puro) 100%);
+            transition: background 0.3s ease;
+        }
+
+        #habilidades article {
+            background: var(--branco-puro);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--cinza-fundo);
+        }
+
+        ol, ul {
+            padding-left: 25px;
+        }
+
+        ol li, ul li {
+            margin: 12px 0;
+            padding: 8px 15px;
+            background: var(--cinza-fundo);
+            border-radius: 10px;
+            list-style-position: inside;
+            transition: all 0.3s ease;
+        }
+
+        ol li:hover, ul li:hover {
+            background: linear-gradient(135deg, var(--roxo-claro), var(--branco-puro));
+            transform: translateX(10px);
+        }
+
+        #projetos article {
+            background: var(--branco-puro);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--cinza-fundo);
+            transition: all 0.3s ease;
+        }
+
+        #projetos article:hover {
+            transform: scale(1.02);
+            border-color: var(--roxo-principal);
+        }
+
+        img {
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+            max-width: 100%;
+            height: auto;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        iframe {
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: var(--sombra-suave);
+            max-width: 100%;
+        }
+
+        aside {
+            background: linear-gradient(135deg, var(--roxo-claro) 0%, var(--branco-puro) 100%);
+            border-right: 6px solid var(--rosa-destaque);
+        }
+
+        aside ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        aside ul li {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        aside ul li:hover {
+            background: var(--branco-puro);
+        }
+
+        aside strong {
+            color: var(--roxo-escuro);
+        }
+
+        form {
+            background: linear-gradient(135deg, var(--cinza-fundo) 0%, var(--branco-puro) 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        form div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--roxo-escuro);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background: var(--branco-puro);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--roxo-principal);
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--roxo-principal), var(--roxo-escuro));
+            color: var(--branco-puro);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+            background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-principal));
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--cinza-texto) 0%, #000000 100%);
+            color: var(--branco-puro);
+            text-align: center;
+        }
+
+        footer h3 {
+            color: var(--branco-puro);
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        footer ul li a {
+            color: var(--roxo-claro);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        footer ul li a:hover {
+            background: var(--branco-puro);
+            color: var(--roxo-escuro);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            nav ul li a {
+                display: block;
+                text-align: center;
+            }
+
+            iframe {
+                height: 250px;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .sobre-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .foto-perfil {
+                margin-bottom: 20px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Letícia Moura</h1>
+        <p>✨ Engenheira de Software em formação ✨</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#sobre">💜 Sobre Mim</a></li>
+            <li><a href="#formacao">📚 Formação</a></li>
+            <li><a href="#habilidades">⚡ Habilidades</a></li>
+            <li><a href="#projetos">🚀 Projetos</a></li>
+            <li><a href="#contato">📧 Contato</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="sobre">
+            <h2>Sobre Mim</h2>
+            <article>
+                <div class="sobre-container">
+                    <figure class="foto-perfil">
+                        <img src="C:\Users\sammy\Downloads\WhatsApp Image 2026-02-22 at 14.38.17.jpeg" alt="Foto de perfil da Letícia Moura">
+                        <figcaption>✨ Letícia Moura ✨</figcaption>
+                    </figure>
+
+                    <div class="sobre-conteudo">
+                        <h3>Minha Trajetória</h3>
+                        <p>Oi. Tudo bem? Sou <b>Letícia Moura</b> estudante de Engenharia de Software e apaixonada por tecnologia e inovação desde sempre. Minha trajetória em T.I. é marcada pela busca constante por transformar ideias em interfaces funcionais, intuitivas e visualmente bem estruturadas. Tenho experiência prática com construção de aplicações, integração com APIs e modelagem de dados, sempre aplicando boas práticas de desenvolvimento e organização de código. Gosto de unir lógica, criatividade e tecnologia para criar experiências digitais que realmente geram impacto. Estou em constante evolução, acompanhando tendências e explorando novas tecnologias para desenvolver soluções modernas, eficientes e centradas no usuário.</p>
+                        <h3>Objetivos Profissionais</h3>
+                        <p>Busco constantemente aprimorar minhas habilidades e conhecimentos para me tornar uma desenvolvedora completa, capaz de criar experiências web significativas e acessíveis para todos os usuários.</p>
+
+                        <blockquote>
+                            "O sucesso é a soma de pequenos esforços repetidos dia após dia." 
+                            <cite>- Robert Collier</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section id="formacao">
+            <h2>Formação Acadêmica</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Curso</th>
+                        <th>Instituição</th>
+                        <th>Ano de Conclusão</th>
+                        <th>Situação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>téc. em Edificações</td>
+                        <td>Instituto Federal do Maranhão</td>
+                        <td>2023</td>
+                        <td>✅ Concluído</td>
+                    </tr>
+                    <tr>
+                        <td>Engenharia de Software</td>
+                        <td>UNIFSA</td>
+                        <td>2027</td>
+                        <td>🔄 Em andamento</td>
+                    </tr>
+                         <tr>
+                        <td>Figma - UX UI do básico ao avançado</td>
+                        <td>Udemy</td>
+                        <td>2025</td>
+                        <td>✅ Concluído</td>
+                    </tr>
+                         <tr>
+                        <td>Python</td>
+                        <td>Curso em vídeo</td>
+                        <td>2025</td>
+                        <td>✅ Concluído</td>
+                    </tr>
+                     </tr>
+                         <tr>
+                        <td>Java</td>
+                        <td>Curso em vídeo</td>
+                        <td>2025</td>
+                        <td>✅ Concluído</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="habilidades">
+            <h2>Minhas Habilidades</h2>
+            <article>
+                <h3>💻 Hard Skills</h3>
+                <ol>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript básico</li>
+                    <li>Versionamento com Git e GitHub</li>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>Figma</li>
+                    <li>n8n</li>
+                    <li>SQL, MySQL e NoSQL</li>
+                    <li>Levantamento de requisitos</li>
+                    <li>Scrum e Kanban</li>
+                    <li>Power BI</li>
+                    <li>IA</li>
+                    <li>Arquitetura e design de software</li>
+                </ol>
+            </article>
+            <article>
+                <h3>🤝 Soft Skills</h3>
+                <ul>
+                    <li>Trabalho em equipe</li>
+                    <li>Comunicação clara e objetiva</li>
+                    <li>Resolução de problemas</li>
+                    <li>Aprendizado contínuo</li>
+                    <li>Proativa</li>
+                    <li>Adaptabilidade a mudanças</li>
+                    <li>Gestão de tempo</li>
+                    <li>Inovação e criatividade</li>
+                </ul>
+            </article>
+        </section>
+        <section id="projetos">
+            <h2>Meus Projetos</h2>
+            <article>
+                <h3>Projeto 1: Sistema de livrarias</h3>
+                <img src="C:\Users\sammy\Downloads\Captura de tela 2025-10-07 111654.png" alt="Livraria Lelet" width="300" height="200">
+                <p>Um sistema completo de livraria online para a Livraria Lelet, integrando login social, gestão de livros e fluxo de compra, com foco em design moderno, responsivo e intuitivo. A aplicação permite autenticação tradicional e via Google, cadastro e gerenciamento completo de livros (criação, edição, exclusão e busca), além de carrinho de compras com cálculo automático de valores e finalização simulada. O projeto prioriza experiência do usuário, organização das funcionalidades e uma interface limpa e interativa, utilizando Supabase como banco de dados <a href="https://github.com/leticiasmx/Sistema-de-Livraria.git" target="_blank"> link do projeto. </a></p>
+            </article>
+
+            <article>
+                <h3>Projeto 2: SteamNow</h3>
+                <img src="C:\Users\sammy\Downloads\SteamNow.png" alt="steam now" width="300" height="200">
+                <p>Desenvolvi um projeto de otimização de banco de dados no PostgreSQL para a plataforma fictícia StreamNow, aplicando particionamento por LIST (país) e RANGE (data) para melhorar desempenho, organização e escalabilidade. Estruturei tabelas particionadas e implementei consultas analíticas estratégicas, demonstrando boas práticas em modelagem, performance e preparação do sistema para alto volume de dados <a href="https://github.com/leticiasmx/StreamNow.git" target="_blank"> link do projeto. </a></p>
+            </article>
+
+                 <article>
+                <h3>Projeto 3: Site sobre Zigbee</h3>
+                <img src="https://www.dusuniot.com/wp-content/uploads/2023/01/zigbee-in-smart-home-application.jpg" alt="zigbee" width="300" height="200">
+                <p>Este projeto é uma página web informativa sobre a tecnologia Zigbee. A página apresenta de forma clara e visualmente atraente os principais conceitos sobre a tecnologia Zigbee, um protocolo de comunicação sem fio amplamente utilizado na Internet das Coisas (IoT) <a href="C:\Users\sammy\Downloads\hub zigbee.htm" target="_blank"> link do projeto. </a></p>
+            </article>
+
+            <article>
+                <h3>Projeto 4: Banco de dados locadora de veiculos</h3>
+                <img src="https://i1.wp.com/novonegocio.com.br/wp-content/uploads/2012/01/como_montar_uma_locadora_de_veiculos.jpg?resize=1024%2C576&ssl=1" alt="locadora" width="300" height="200">
+                <p>Desenvolvi um sistema completo de banco de dados para locadoras de veículos que automatiza e integra todas as operações do negócio: cadastro de clientes com CPF único, gestão da frota com disponibilidade em tempo real, controle de locações com cálculo automático de valores, registro de transações financeiras e histórico de manutenções. A solução elimina planilhas manuais, reduz erros operacionais e oferece visibilidade completa do negócio para uma gestão mais eficiente e assertiva <a href="https://github.com/leticiasmx/locadora-banco-de-dados.git" target="_blank"> link do projeto. </a></p>
+            </article>
+
+            <article>
+                <h3> Projeto 5: NutriAI</h3>
+                <img src="C:\Users\sammy\OneDrive\Imagens\Screenshots\Captura de tela 2026-02-22 155348.png" alt="nutriai" width="300" height="200">
+                <p>Desenvolvi junto a uma equipe uma solução tecnológica inteligente que melhora a qualidade de vida e os resultados do tratamento de pacientes com câncer de estômago e diabetes, através de um plano alimentar 100% personalizado e dinâmico, utilizando inteligência artificial para adaptar as recomendações nutricionais em tempo real <a href="https://github.com/leticiasmx/NutriAi_St.git" target="_blank"> link do prejeto.</a></p>
+            </article>
+
+             <article>
+                <h3> Projeto 6: Recomendador de receitas fitness</h3>
+                <img src="https://www.sabornamesa.com.br/media/k2/items/cache/fb724689fdf591b9982252b66ec91f1d_L.jpg" alt="receitas fitness" width="300" height="200">
+                <p>Este projeto é uma automação criada no <b>n8n</b>. O fluxo utiliza <b>embeddings da OpenAI</b> combinados com um <b>banco vetorial no Supabase</b> para pesquisar receitas fitness por similaridade semântica. O usuário envia uma palavra-chave → o workflow converte para embedding → o Supabase retorna as receitas mais próximas → o n8n entrega a resposta <a href="https://github.com/leticiasmx/TRABALHO_BD-VETORIAL.git" target="_blank">link do projeto.</a></p>
+            </article>
+
+            <h3>📺 Vídeo Demonstrativo Sistema para Livraria Lelet</h3>
+            <iframe width="400" height="215" src="C:\Users\sammy\Videos\Captures\Sistema livraria lelet - lovable.mp4"></iframe>
+
+            <h3>📺 Vídeo Demonstrativo Sistema para Livraria Lelet</h3>
+            <iframe width="400" height="215" src="C:\Users\sammy\Videos\Captures\Sistema livraria lelet - lovable.mp4"></iframe>
+        </section>
+
+        <aside>
+            <h3>📌 Informações Rápidas</h3>
+            <ul>
+                <li><strong>📍 Localização:</strong> Timon-MA | Teresina-PI</li>
+                <li><strong>💼 Disponibilidade:</strong> Estágio em T.I</li>
+                <li><strong>🗣️ Idiomas:</strong> Espanhol intermediário e Inglês intermediário</li>
+            </ul>
+        </aside>
+
+        <section id="contato">
+            <h2>Entre em Contato</h2>
+            <form action="#" method="post">
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required>
+                </div>
+                
+                <div>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+                
+                <div>
+                    <label for="assunto">Assunto:</label>
+                    <input type="text" id="assunto" name="assunto" placeholder="Sobre o que quer falar?" required>
+                </div>
+                
+                <div>
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                </div>
+                
+                <div>
+                    <button type="submit">✨ Enviar Mensagem ✨</button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+    <footer>
+        <h3>🌐 Redes Sociais e Links Externos</h3>
+        <ul>
+            <li><a href="https://github.com/leticiasmx" target="_blank">🐙 GitHub</a></li>
+            <li><a href="https://instagram.com/leletcode" target="_blank">📸 Instagram</a></li>
+            <li><a href="https://wa.me/559982052171" target="_blank">📱 WhatsApp</a></li>
+            <li><a href="mailto:sammyaleticia1234@gmail.com" target="_blank">📩 Email</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
