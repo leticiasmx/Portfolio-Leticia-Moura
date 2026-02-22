@@ -66,6 +66,10 @@ Sistema de recomendação voltado para sugestões personalizadas na área fitnes
 
 Se quiser conversar sobre projetos, oportunidades ou trocar ideias sobre tecnologia e inovação, entre em contato:
  
-- 📸 [Instagram](https://instagram.com/leletcode) 
-- 💬 WhatsApp: https://wa.me/seunumero  
-- 📧 Email: seuemail@gmail.com
+- 📸 [Instagram](https://instagram.com/leletcode)   
+- 📧 [Email](sammyaleticia1234@gmail.com)
+
+## 👩‍💻 Autora
+
+Letícia Moura
+Engenharia de Software - UNIFSA
