@@ -65,8 +65,7 @@ Sistema de recomendação voltado para sugestões personalizadas na área fitnes
 ## 📬 Contato
 
 Se quiser conversar sobre projetos, oportunidades ou trocar ideias sobre tecnologia e inovação, entre em contato:
-
-- 💻 [GitHub[https://github.com/leticiasmx]]  
-- 📸 Instagram: https://instagram.com/seuusuario  
+ 
+- 📸 [Instagram(https://instagram.com/leletcode)] 
 - 💬 WhatsApp: https://wa.me/seunumero  
 - 📧 Email: seuemail@gmail.com
