@@ -66,6 +66,6 @@ Sistema de recomendação voltado para sugestões personalizadas na área fitnes
 
 Se quiser conversar sobre projetos, oportunidades ou trocar ideias sobre tecnologia e inovação, entre em contato:
  
-- 📸 (Instagram[https://instagram.com/leletcode]) 
+- 📸 [Instagram](https://instagram.com/leletcode) 
 - 💬 WhatsApp: https://wa.me/seunumero  
 - 📧 Email: seuemail@gmail.com
